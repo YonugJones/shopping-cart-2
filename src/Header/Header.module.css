@@ -1,0 +1,25 @@
+.header-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.header-title {
+  font-weight: bold;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-links a {
+  margin: 0 10px;
+}
