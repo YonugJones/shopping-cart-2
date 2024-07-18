@@ -1,0 +1,29 @@
+.card-container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+.product-image {
+  height: 100px;
+  width: auto;
+  object-fit: cover;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control button,
+.quantity-control input {
+  margin: 0 5px;
+}
+
+button {
+  margin-top: 10px;
+}

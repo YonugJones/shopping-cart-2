@@ -7,7 +7,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (productToAdd) => {
@@ -33,7 +33,7 @@ const Shop = () => {
   }, [])
 
   useEffect(() => {
-    if (selectedCategory === 'All') {
+    if (selectedCategory === 'ALL') {
       setFilteredProducts(products)
     } else {
       setFilteredProducts(products.filter(product => product.category === selectedCategory.toLowerCase()))
@@ -42,7 +42,6 @@ const Shop = () => {
 
   return (
     <div className={styles['shop-container']}>
-      <h1>SHOP</h1>
       <nav className={styles['categories-links']}>
         <ul>
           {['ALL', 'ELECTRONICS', 'JEWELERY', 'MEN\'S CLOTHING', 'WOMEN\'S CLOTHING'].map(category => (
@@ -58,7 +57,6 @@ const Shop = () => {
       </nav>
       <div className={styles['display-container']}>
         {error && <p>Error: {error}</p>}
-        <h2>{selectedCategory}</h2>
         <div className={styles['products-grid']}>
           {filteredProducts.map(product => (
             <Card key={product.id} product={product} addToCart={addToCart} />

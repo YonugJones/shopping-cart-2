@@ -1,0 +1,35 @@
+.shop-container {
+  padding: 20px;
+}
+
+.shop-container h1 {
+  text-align: center;
+}
+
+.shop-container nav {
+  display: flex;
+  justify-content: center;
+}
+
+.categories-links ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.categories-links li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.categories-links .selected {
+  background-color: lightgray;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
