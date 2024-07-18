@@ -6,7 +6,7 @@ const ErrorPage = () => {
     <div className={styles['error-container']}>
       <h1>Oh no! This route doesn&apos;t work</h1>
         <Link to='/' className={styles['home-link']}>
-          To go home, click here!
+          Click here to go home!
         </Link>
     </div>
   )
