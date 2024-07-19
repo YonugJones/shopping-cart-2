@@ -23,6 +23,7 @@ const Card = ({ product, addToCart }) => {
 
   const handleAddToCart = () => {
     addToCart({ ...product, quantity })
+    setQuantity(1)
   }
 
   return (

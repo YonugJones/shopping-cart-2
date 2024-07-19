@@ -11,6 +11,7 @@ const Header = ({ cartItems, removeFromCart, updateQuantity }) => {
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+    console.log('cart got clicked!')
   }
 
   return (
@@ -20,7 +21,7 @@ const Header = ({ cartItems, removeFromCart, updateQuantity }) => {
         <Link to='/'>HOME</Link>
         <Link to='shop'>SHOP</Link>
       </div>
-      <div className={styles['header-checkout']}>
+      <div className={styles['header-checkout']} onClick={toggleCart}>
         <FontAwesomeIcon icon={faCartShopping} />
       </div>
       {isCartOpen && (

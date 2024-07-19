@@ -24,6 +24,10 @@
   margin: 0 5px;
 }
 
+.quantity-control input {
+  text-align: center;
+}
+
 button {
   margin-top: 10px;
 }
