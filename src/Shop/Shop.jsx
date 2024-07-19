@@ -11,8 +11,16 @@ const Shop = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (productToAdd) => {
-    setCartItems([...cartItems, { ...productToAdd }])
-    console.log(cartItems);
+    const existingItem = cartItems.find(item => item.id === productToAdd.id)
+    if (existingItem) {
+      setCartItems(cartItems.map(item => 
+        item.id === productToAdd.id 
+          ? { ...item, quantity: item.quantity + productToAdd.quantity }
+          : item
+      ))
+    } else {
+      setCartItems([...cartItems, productToAdd])
+    }
   }
 
   const handleCategoryClick = (category) => {
