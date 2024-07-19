@@ -12,6 +12,7 @@ const Shop = () => {
 
   const addToCart = (productToAdd) => {
     setCartItems([...cartItems, { ...productToAdd }])
+    console.log(cartItems);
   }
 
   const handleCategoryClick = (category) => {
