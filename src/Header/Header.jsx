@@ -5,13 +5,11 @@ import styles from './Header.module.css';
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
 
-
 const Header = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
-    console.log('cart got clicked!')
   }
 
   return (
@@ -33,6 +31,7 @@ const Header = ({ cartItems, removeFromCart, updateQuantity }) => {
         />
       )}
     </div>
-  )
+  );
 }
+
 export default Header;

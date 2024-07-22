@@ -1,16 +1,16 @@
-import { useState } from "react"
-import styles from './Card.module.css'
+import { useState } from "react";
+import styles from './Card.module.css';
 
 const Card = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1)
+    setQuantity(quantity + 1);
   }
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1)
+      setQuantity(quantity - 1);
     }
   }
 
@@ -22,14 +22,16 @@ const Card = ({ product, addToCart }) => {
   }
 
   const handleAddToCart = () => {
-    addToCart({ ...product, quantity })
-    setQuantity(1)
+    console.log('Product added:', { ...product, quantity });
+    addToCart({ ...product, quantity });
+    setQuantity(1);
   }
 
   return (
     <div className={styles['card-container']}>
       <img src={product.image} alt={product.title} className={styles['product-image']} />
       <h3>{product.title}</h3>
+      <p>${product.price}</p>
       <div className={styles['quantity-control']}>
         <button onClick={handleDecrement}>-</button>
         <input 

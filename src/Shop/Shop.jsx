@@ -1,27 +1,15 @@
-import { useState, useEffect } from "react";
-import Card from "../Card/Card";
-import fetchClothing from "../api/api";
+import { useState, useEffect } from 'react';
+import Card from '../Card/Card';
+import fetchClothing from '../api/api';
 import styles from './Shop.module.css';
+import { useOutletContext } from 'react-router-dom';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (productToAdd) => {
-    const existingItem = cartItems.find(item => item.id === productToAdd.id)
-    if (existingItem) {
-      setCartItems(cartItems.map(item => 
-        item.id === productToAdd.id 
-          ? { ...item, quantity: item.quantity + productToAdd.quantity }
-          : item
-      ))
-    } else {
-      setCartItems([...cartItems, productToAdd])
-    }
-  }
+  const { addToCart } = useOutletContext();
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category)
@@ -34,20 +22,20 @@ const Shop = () => {
         setProducts(data);
         setFilteredProducts(data);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       }
     }
 
     fetchData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (selectedCategory === 'ALL') {
-      setFilteredProducts(products)
+      setFilteredProducts(products);
     } else {
-      setFilteredProducts(products.filter(product => product.category === selectedCategory.toLowerCase()))
+      setFilteredProducts(products.filter(product => product.category === selectedCategory.toLowerCase()));
     }
-  }, [selectedCategory, products])
+  }, [selectedCategory, products]);
 
   return (
     <div className={styles['shop-container']}>
@@ -73,6 +61,7 @@ const Shop = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 export default Shop;

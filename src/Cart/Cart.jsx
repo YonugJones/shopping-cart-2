@@ -1,7 +1,11 @@
 import styles from './Cart.module.css';
+import { useEffect } from 'react';
 
 const Cart = ({ cartItems, onClose, removeFromCart, updateQuantity }) => {
-  console.log('Cart component rendered')
+  useEffect(() => {
+    console.log('Cart component rendered with items:', cartItems);
+  }, [cartItems]);
+
   return (
     <div className={styles['cart-container']}>
       <div className={styles['cart-content']}>
@@ -24,6 +28,7 @@ const Cart = ({ cartItems, onClose, removeFromCart, updateQuantity }) => {
         )}
       </div>
     </div>
-  )
+  );
 }
+
 export default Cart;
