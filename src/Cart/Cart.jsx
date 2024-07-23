@@ -6,6 +6,8 @@ const Cart = ({ cartItems, onClose, removeFromCart, updateQuantity }) => {
     console.log('Cart component rendered with items:', cartItems);
   }, [cartItems]);
 
+  const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+
   return (
     <div className={styles['cart-container']}>
       <div className={styles['cart-content']}>
@@ -14,17 +16,23 @@ const Cart = ({ cartItems, onClose, removeFromCart, updateQuantity }) => {
         {cartItems.length === 0 ? (
           <p>Your Cart Is Empty</p>
         ) : (
-          <ul>
-            {cartItems.map((item, index) => (
-              <li key={index}>
-                <h3>{item.title}</h3>
-                <p>Quantity: {item.quantity}</p>
-                <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
-                <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ul className={styles['cart-list']}>
+              {cartItems.map((item, index) => (
+                <li className={styles['cart-item']} key={index}>
+                  <img className={styles['cart-product-image']} src={item.image} alt={item.name} />
+                  <h3>{item.title}</h3>
+                  <p>Price each: ${(item.price.toFixed(2))}</p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Total: ${(item.price * item.quantity).toFixed(2)}</p>
+                  <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
+                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                  <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+            <h3>Cart Total: ${cartTotal.toFixed(2)}</h3>
+          </div>
         )}
       </div>
     </div>

@@ -31,7 +31,7 @@ const Card = ({ product, addToCart }) => {
     <div className={styles['card-container']}>
       <img src={product.image} alt={product.title} className={styles['product-image']} />
       <h3>{product.title}</h3>
-      <p>${product.price}</p>
+      <p>${(product.price).toFixed(2)}</p>
       <div className={styles['quantity-control']}>
         <button onClick={handleDecrement}>-</button>
         <input 
